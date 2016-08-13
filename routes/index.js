@@ -1,9 +1,8 @@
-var express = require('express');
-var router = express.Router();
+var route = require('./route');
 
-/* GET home page. */
-router.get('/', function(req, res, next) {
-  res.render('index', { title: 'Express' });
-});
+module.exports = function(app){
+  // If need auth or routing extend
+  // TODO do something
 
-module.exports = router;
+  app.use(route());
+};
