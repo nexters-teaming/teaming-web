@@ -8,7 +8,9 @@ var router = express.Router();
 module.exports = function(){
 
     // User controller
-    router.get('/users', api.user.getMe);        // 내 정보
+    router.get('/main', api.user.getMe);        // 메인 화면
+    router.get('/teams', api.team.getTeam);     // 팀 목록
+    router.get('/boards', api.board.getBoard);  // 섹션별 목록
 
     return router;
 };
