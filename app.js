@@ -1,4 +1,7 @@
-var express = require('express');
+
+
+
+var express = require('express'); // 서버 모듈 추출
 var path = require('path');
 var favicon = require('serve-favicon');
 var logger = require('morgan');
@@ -7,8 +10,9 @@ var bodyParser = require('body-parser');
 
 var routes = require('./routes/index');
 var errors = require('./routes/error');
-dddd
-var app = express();
+
+
+var app = express(); // 서버 생성
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));

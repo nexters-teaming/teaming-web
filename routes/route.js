@@ -8,7 +8,6 @@ var router = express.Router();
 module.exports = function(){
 
     // User controller
-    router.get('/users', api.user.getMe);        // 내 정보
 
     return router;
 };
