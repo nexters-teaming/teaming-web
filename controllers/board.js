@@ -3,6 +3,7 @@
  */
 var request = require('request');
 var credentials = require('../credentials.js');
+var async = require('async');
 var host = "";
 if (process.env.NODE_ENV == "development") host = credentials.host.dev;
 else host = credentials.host.api;
@@ -12,6 +13,29 @@ module.exports = {
         var data = {
             section_id : req.params.section_id
         };
+
+
+        async.waterfall([
+            function(callback) {
+                console.log("1");
+                callback(null);
+            }, function(callback) {
+                console.log("2");
+
+
+                callback(null, {data1 :'data1', data2:'data2', data3:'data3'}, 'option');
+
+
+            }, function(context, option, callback) {
+                if (option)
+                    console.log(context);
+                callback(null, 'result1', 'result2');
+            }],
+            function(err, result1, result2) {
+                if (err) console.log(err);
+                console.log(result1 + result2);
+            });
+
 
         request.get({
             url : host + "/section/"+data.section_id,
