@@ -39,7 +39,7 @@ var errorCode = require('./errorCode');
 module.exports = function (err, res, mode) {
     if (err instanceof Error) {
         console.log(err);
-        res.status(err.status).render('error', {msg : err.message});
+        res.status(err.status).render('error', {message : err.message, error : err });
     } else {
         var error = errorCode[err.status];
         if (mode === 'development') {

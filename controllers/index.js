@@ -7,8 +7,8 @@ var board = require('./board');
 
 var api = {
     main : main.login,
-    team : team,
-    board: board
+    team : team.test,
+    board: board.test
 
 };
 
