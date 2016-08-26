@@ -1,0 +1,157 @@
+<!doctype html>
+<html class="no-js" lang="ko">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title></title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="apple-touch-icon" href="apple-touch-icon.png">
+    <!-- Place favicon.ico in the root directory -->
+
+    <link rel="stylesheet" href="/css/normalize.css">
+    <link rel="stylesheet" href="/css/main.css">
+
+</head>
+<body>
+<header class = "main_page_header">
+    <nav class = "main_page_nav">
+        <div class = "main_nav_left_something"></div><!-- main nav left something-->
+        <a href = "main.html"><img src = "/img/main/teaming_logo.png" alt = "logo" height = "40px"></a>
+        <img src = "/img/main/noti_icon.png" alt = "alarm">
+    </nav>
+</header>
+<main class = "main_page_main">
+    <aside class = "main_page_personal_list">
+        <ul>
+            <a href="#"><li>LINK ONE</li></a>
+            <a href="#"><li>LINK TWO</li></a>
+            <a href="#"><li>LINK THREE</li></a>
+            <a href="#"><li>LINK FOUR</li></a>
+            <a href="#"><li>LINK FIVE</li></a>
+        </ul>
+    </aside>
+    <section class = "main_page_team_list">
+        <div class = "team_list">
+            <div class = "team_list_something team_list_create" id = "myBtn">
+                <img src = "/img/main/icon_team_da.png">
+
+            </div>
+            <% if (typeof team_list != 'undefined' && team_list.length != 0 ) { console.log(team_list);
+                team_list.forEach(function(val, index) { %>
+            <a id="sections" href="/sections/<%=val.team_id%>">
+            <div class = "list_sequence_main team_list_something">
+                <div class = "list_sequence_header">
+                    <h1 class = ""><%=val.teamname%></h1>
+                    <span class = ""><% if (val.team_progress == 100){%>완료<%} else {%>진행중<% }%></span>
+                    <span class = "header_date"> | <%=val.start_date%>~<%=val.end_date%></span>
+                    <div class = "list_sequence_header_icon">
+                        <img src = "/img/main/icon_link.png" class = "change_cond_icon" alt = "sequence_icon" data-swap = "/img/main/icon_link_sel.png">
+                        <img src = "/img/main/icon_modify.png" class = "change_cond_icon" alt = "sequence_icon" data-swap = "/img/main/icon_modify_sel.png">
+                        <img src = "/img/main/icon_exit.png" class = "change_cond_icon" alt = "sequence_icon" data-swap = "/img/main/icon_exit_sel.png">
+                    </div>
+                </div>
+                <div class = "list_sequence_header_progress">
+
+                    <div class="progress-wrap progress" data-progress-percent="<%=val.team_progress%>">
+                        <div class="progress-bar progress"></div>
+                    </div>
+                    <div class = "progress_percent">
+                        <%=val.team_progress%>%
+                    </div>
+                </div>
+                <div class = "list_sequence_option">
+
+                </div>
+
+            </div>
+            </a>
+            <% });
+            }%>
+        </div>
+    </section>
+    <!-- The Modal -->
+    <div id="myModal" class="modal">
+
+        <!-- Modal content 끝나고 required  반드시 입력할것 -->
+        <div class="modal_content">
+            <form name="make_team" action = "/teams" method = "post" class = "form_wrapper">
+            <!--<form action = "main-section.html" method = "post" class = "form_wrapper">-->
+                <div class = "form_row_wrapper">
+                    <span class = "form_text">팀 이름</span>
+                    <input type = "text" name = "team_name" class = "team_name" placeholder="텍스트입력">
+                </div>
+                <div class = "form_row_wrapper">
+                    <span class = "form_text">설명</span>
+                    <textarea name = "team_" class = "team_" placeholder="텍스트입력" ></textarea>
+                </div>
+                <div class = "form_row_wrapper">
+                    <span class = "form_text">섹션개수</span>
+                    <input type = "number" name = "section_count" class = "section_count" value = "1" min = "1">
+                </div>
+                <div class = "form_row_wrapper">
+                    <span class = "form_text">프로젝트 기간</span>
+                    <input type = "date" name = "start_date" class = "start_date">
+                    <input type = "date" name = "end_date" class = "end_date">
+                </div>
+                <div class = "form_row_wrapper form_row_submit">
+                    <input type = "submit" value = "등록완료" class = "submit_button">
+                </div>
+            </form>
+            <div class = "modal_close">
+                <img src = "/img/main/exit_bt.png" alt = "exit_button">
+            </div>
+        </div>
+
+    </div>
+
+
+</main>
+<footer class = "main_page_footer">
+
+</footer>
+<script   src="https://code.jquery.com/jquery-3.1.0.min.js"   integrity="sha256-cCueBR6CsyA4/9szpPfrX3s49M9vUU5BgtiJj06wt/s="   crossorigin="anonymous"></script>
+<script type="text/javascript" src = "/js/view.js"></script>
+<script type="text/javascript">
+    // on page load...
+
+
+    $(document).ready(function(){
+        moveProgressBar();
+        moveAsideBar();
+        openCreateModal();
+        changeCondIcon();
+    });
+
+    // on browser resize...
+    $(window).resize(function() {
+        moveProgressBar();
+
+    });
+/*
+    function makeTeam() {
+        var make_team = document.make_team;
+        $.ajax({
+            url:host+'/team',
+            type:'post',
+            data: {
+                team_name : make_team.team_name,
+                team_ : make_team.team_,
+                start_date : make_team.start_date,
+                end_date : make_team.end_date,
+                section_count : make_team.section_count
+            },
+            success: function(body){
+                var add_content = body.data
+                var new_content = $("#sections").clone();
+                new_content =
+
+                $(".team_list").append("<p>Test</p>");
+            }
+        });
+    }*/
+
+</script>
+</body>
+</html>

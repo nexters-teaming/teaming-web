@@ -3,12 +3,16 @@
  */
 var main = require('./main');
 var team = require('./team');
+var section = require('./section');
 var board = require('./board');
+var user = require('./user');
 
 var api = {
     main : main.login,
-    team : team.test,
-    board: board.test
+    team : team,
+    section : section,
+    board: board.test,
+    user: user.login,
 
 };
 

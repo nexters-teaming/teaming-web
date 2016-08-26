@@ -1,0 +1,103 @@
+
+/* The Modal (background) */
+.modal {
+    /*display: none;*/ /* Hidden by default */
+    position: absolute; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+/* Modal Content/Box */
+.modal_content {
+    position:relative;
+    width:341px;
+    height:515px;
+    background-color: #ffffff;
+    border-radius:10px;
+    border: solid 1px #979797;
+    margin: 8% auto; /* 15% from the top and centered */
+    padding: 40px 40px 20px 40px;
+}
+
+.modal_header_title{
+    display:flex;
+}
+
+.modal_header_title_date{
+    margin-top:30px;
+    margin-left:15px;
+}
+
+
+.modal_header_title_date .title_dday{
+    font-size: 12px;
+    font-weight: 500;
+    color: #a8a8a8;
+}
+
+.modal_header_title_date .title_term{
+    font-family: Avenir;
+    font-size: 14px;
+    font-weight: 900;
+    color: #2b3245;
+}
+
+
+.modal_header_info{
+
+}
+
+.modal_header_info_title .info_title_context{
+    font-size: 24px;
+    font-weight: 600;
+    color: #282828;
+}
+
+.modal_header_info_text .info_text_context{
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 1.43;
+    color: #bbbbbb;
+}
+
+.modal_header_participant{
+    position:relative;
+}
+
+.modal_header_participant_list .modal_header_participant_list_title{
+    font-size: 16px;
+    font-weight: 600;
+    color: #626262;
+}
+
+.modal_header_participant_list_member{
+    display:flex;
+}
+
+.modal_header_participant_list_member .list_member_name{
+    font-size: 14px;
+    font-weight: 500;
+    color: #494949;  
+}
+
+  
+.modal_header_participant_close{
+    position:absolute;
+    top:10px;
+    right:10px;
+    cursor: pointer;
+}
+
+
+.modal_close {
+    position:absolute;
+    top:10px;
+    right:10px;
+    cursor:pointer;
+}

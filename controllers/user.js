@@ -1,5 +1,5 @@
 /**
- * Created by YS on 2016-08-20.
+ * Created by YS on 2016-08-25.
  */
 var request = require('request');
 var credentials = require('../credentials.js');
@@ -9,9 +9,26 @@ else host = credentials.host.api;
 
 module.exports = {
     login : function(req, res, next) {
-        request.get({
-            url : host + "/",
-            'access-token' : 'test'
+        var data = {
+            access_token: req.header('access-token'),
+            user_id: req.body.user_id,
+            username: req.body.username,
+            email: req.body.email,
+            user_picture: req.body.user_picture
+        };
+        console.log(data);
+
+        request.post({
+            url : host + "/users/oauth",
+            headers : {
+                'access-token' : data.access_token
+            },
+            form : {
+                user_id: data.user_id,
+                username: data.username,
+                email: data.email,
+                user_picture: data.user_picture
+            }
         }, function(err,httpResponse,body){
             if (err) {
                 var error = new Error("서버연결 실패");
@@ -26,7 +43,8 @@ module.exports = {
             }
 
             res.statusCode = 200;
-            res.render('index', {title: '테스트', host: credentials.host.web, api: credentials.host.api});
+            res.cookie('access_token', data.access_token,{ expires: new Date(Date.now() + 90000000), httpOnly: true ,signed:true});
+            res.json({redirect_url: "/teams"});
         });
     }
 };

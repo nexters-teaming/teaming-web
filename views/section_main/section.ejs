@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title></title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="apple-touch-icon" href="apple-touch-icon.png">
+    <!-- Place favicon.ico in the root directory -->
+
+    <link rel="stylesheet" href="/css/normalize.css">
+    <link rel="stylesheet" href="/css/main-section.css">
+    <link rel="stylesheet" type="text/css" href="/css/section-detail.css">
+</head>
+<body>
+
+<header>
+    <nav class = "main_section_nav">
+        <div></div>
+
+        <img src = "/img/main-section/teaming_logo.png" alt = "logo" height = "40px">
+        <img src = "/img/main-section/noti_icon.png"  class = "alarm" alt = "alarm">
+    </nav>
+
+    <div class = "main_section_header">
+        <div class = "main_section_header_info">
+            <p>
+                <span class = "info_header"><%=team_detail.teamname%></span><br>
+                <span class = "info_text"><%=team_detail.description%></span>
+            </p>
+            <div class = "main_section_header_allmember">
+                <img src = "/img/main-section/icon_allmember.png" alt = "icon_allemember">
+            </div>
+        </div>
+        <div class = "main_section_header_progress">
+            <p class = "progress_percent">
+                <%=team_detail.team_progress%><span class = "percent_sign">%</span>
+            </p>
+            <div class="progress-wrap progress" data-progress-percent="50">
+                <div class="progress-bar progress"></div>
+            </div>
+            <div class = "left_days">
+                <p>
+                    <span class = "Ddays">D-<%=team_detail.d_day%></span><br>
+                    <span class = "dates"><%=team_detail.start_date%> ~ <%=team_detail.end_date%></span>
+                </p>
+            </div>
+        </div>
+    </div>
+</header>
+<main class = "main">
+    <aside class = "aside_section_role_list">
+        <ul>
+            <% if (typeof section_list != 'undefined') {
+                section_list.forEach(function(val,index) { %>
+            <a href="/section/<%=team_detail.team_id%>/<%=val.section_id%>"><li><%=val.section_title%></li></a>
+            <%  })
+            }%>
+            <li>NEW SECTION+</li>
+        </ul>
+    </aside>
+    <section class = "main_section">
+        <% if (typeof section_detail != 'undefined') {%>
+        <article class = "main_section_job_header">
+            <div class = "main_section_job_info">
+                <div class="canvas-wrap">
+                    <canvas id="canvas" width="103.5" height="105"></canvas>
+                    <span id="procent"></span>
+                </div>
+                <div class = "main_section_job_info_header">
+                    <span class = "list_header">INFORMATHION</span><br/>
+                    <span class = "list_info">총 <%=section_list.length%>개의 LIST</span>
+                </div>
+                <div class = "main_section_job_info_condition">
+                    <% var todo=0;
+                        var doing=0;
+                        var done=0;
+                        work_list.forEach(function(val,index) {
+                            switch (val.work_process) {
+                                case 0:
+                                    todo++;
+                                    break;
+                                case 1:
+                                    doing++;
+                                    break;
+                                case 2:
+                                    done++;
+                                    break;
+                            }
+                        });%>
+                    <span class = "">TO DO <%=todo%></span>
+                    <span class = "">DONE <%=doing%></span>
+                    <span class = "">DOING <%=done%></span>
+                </div>
+                <div class = "main_section_job_info_member">
+
+                </div>
+            </div>
+            <div class = "main_section_job_nav">
+                <div id = "all">
+                    <p>ALL</p>
+                </div>
+                <div id = "done">
+                    <p>DONE</p>
+                </div>
+                <div id = "doing">
+                    <p>DOING</p>
+                </div>
+                <div id = "todo">
+                    <p>TO DO</p>
+                </div>
+            </div>
+        </article>
+
+        <article class = "main_section_job_list">
+            <div class = "job_something create">
+                <img src="/img/main-section/bt_add_list.png" alt = "create_job">
+            </div>
+
+            <% if (work_list.length != 0 || typeof work_list == 'undefined') {
+                work_list.forEach(function(val, index) { %>
+            <div class = "job_something todo">
+                <div class = "job_perfection">
+                    <% switch(val.work_process) {
+                        case 0: %>
+                    <img src = "/img/main-section/icon_list_todo.png" alt = "todo">
+                    <%      break;
+                        case 1: %>
+                    <img src = "/img/main-section/icon_list_doing.png" alt = "doing">
+                    <%      break;
+                        case 2: %>
+                    <img src = "/img/main-section/icon_list_done.png" alt = "done">
+                    <%      break;
+                    }
+                    %>
+                </div>
+                <div class = "job_info">
+                    <p>
+                        <span class = "job_name "><%=val.work_title%>	</span><br>
+                        <span class = "job_date"><%=val.start_date%> ~ <%=val.end_date%></span>
+                    </p>
+                </div>
+            </div>
+            <%  })
+            }%>
+
+        </article>
+        <% } %>
+    </section>
+    <aside>
+
+    </aside>
+</main>
+<script   src="https://code.jquery.com/jquery-3.1.0.min.js"   integrity="sha256-cCueBR6CsyA4/9szpPfrX3s49M9vUU5BgtiJj06wt/s="   crossorigin="anonymous"></script>
+<script type="text/javascript">
+    window.onload = function() {
+        showJobListByCond();
+        var $canvas_circle_progress = $('#canvas'),
+                $span_Procent = $('#procent'),
+                make_circle = $canvas_circle_progress.get(0).getContext("2d");
+
+        const pos_X = $canvas_circle_progress.width() / 2,
+                pos_Y = $canvas_circle_progress.height() / 2,
+                fps_make_circle = 1000 / 200, one_procent = 360 / 100;
+
+        var procent = 0, result = one_procent * 64;
+
+        make_circle.lineCap = 'round';
+        arcMove();
+
+        function arcMove(){
+            var deegres = 0;
+            var acrInterval = setInterval (function() {
+                deegres += 1;
+                make_circle.clearRect( 0, 0, $canvas_circle_progress.width(), $canvas_circle_progress.height());
+                procent = deegres / one_procent;
+                $span_Procent.text(procent.toFixed());
+
+                make_circle.beginPath();
+                make_circle.arc( pos_X, pos_Y, 49, (Math.PI/180) * 270, (Math.PI/180) * (270 + 360) );
+                make_circle.strokeStyle = '#e6e6e6';
+                make_circle.lineWidth = '5';
+                make_circle.stroke();
+
+                make_circle.beginPath();
+                make_circle.strokeStyle = '#ffc120';
+                make_circle.lineWidth = '5';
+                make_circle.arc( pos_X, pos_Y, 49, (Math.PI/180) * 270, (Math.PI/180) * (270 + deegres) );
+                make_circle.stroke();
+                if( deegres >= result ) clearInterval(acrInterval);
+            }, fps_make_circle);
+        }
+    }
+
+    function showJobListByCond(){
+        $("#all, #done, #doing, #todo").click(function(){
+            var click_id_Text = $(this).attr("id");
+            if(click_id_Text === "all"){
+                $(".job_something").show();
+            }else{
+                $(".job_something").hide();
+                $("." + click_id_Text).show();
+            }
+        });
+    }
+</script>
+</body>
+</html>

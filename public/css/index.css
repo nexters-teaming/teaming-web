@@ -1,0 +1,249 @@
+/*index.css */
+
+/*
+
+1. we can use flex model instred of float
+2. if designer wants to change, we must change only if comment alive
+
+*/
+
+@import url(http://fonts.googleapis.com/earlyaccess/notosansgothic.css);
+
+
+body{
+	background-image:url("../img/index/bg_login.png");
+}
+
+
+/*index page header*/
+
+
+/*index page main*/
+
+.index_page{
+	display:flex;
+	flex-flow:row wrap;
+	width:940px;
+	height: 600px;
+	margin: 8% 	auto;
+	border-radius: 10px;
+	background-color: #ffffff;
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.31);
+	border: solid 1px rgba(155, 154, 155, 0.6);
+
+}
+
+/*index page intro*/
+
+.index_page_intro{
+	background-color:white; /*왼쪽 배경색*/
+	width:50%;
+	order:1;
+	display:flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+
+}
+
+.index_page_contents{
+	margin:0 auto;
+}
+
+.index_page_intro_main{
+	margin-top:0; /*왼쪽 콘텐츠 내용 위쪽 여백*/
+	margin-bottom:0; /*왼쪽 콘텐츠 내용 아래쪽 여백*/
+}
+
+.index_page_intro_main > h1{
+	font-family: 'Noto Sans Gothic', "Apple SD Gothic Neo", Dotum, sans-serif; /*제목 글씨체*/
+	font-size:30px; /*제목 크기*/
+	font-weight: bold;
+	text-align: center;
+}
+
+
+.index_page_intro_main > p{
+	font-family: 'Noto Sans Gothic', "Apple SD Gothic Neo", Dotum, sans-serif; /*왼쪽 콘텐츠 내용 글씨체*/
+	font-size:19px; /*왼쪽 콘텐츠 내용 크기 */
+	text-align: center;
+}
+
+.text_point{
+	color:#e45847; /*왼쪽 콘텐츠 글씨 색 포인트*/
+}
+
+/*index page intro logo*/
+
+/*
+.index_page_intro_logo{
+	background-image:url("../img/element_login.png");
+	width:383px;
+	height:262px;
+	display:flex;
+	align-items: center;
+	justify-content: center;
+}
+
+
+.index_page_intro_logo > img{
+	display:block;
+	margin:18% auto;
+}
+
+*/
+
+/*index page login form*/
+
+.index_page_connect{
+	background-color:white; /*오른쪽 배경색*/
+	width:50%;
+	order:2;
+	display:flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.index_page_login{
+	width:350px;
+	margin:0 auto;
+}
+
+/*index page text*/
+
+.index_page_login > div > p{
+	font-family: Avenir-Book, sans-serif;
+	text-align:center;
+	color: #5a5a5a;
+}
+
+.index_page_text{
+	padding-bottom: 40px;
+}
+
+.index_page_login > div > p .index_page_header{
+	
+	font-size: 50px;
+	color: #5a5a5a;
+}
+
+.index_page_login > div > p .index_page_header_text{
+	font-size: 22px;
+}
+
+
+.index_page_connect > div > figure > img{
+	width:200px; /*로고 크기 (디자이너가 크기 정해주면 나중에 max-width:100%로 바꿀 것)*/
+	height:100px; /*로고 크기 (디자이너가 크기 정해주면 나중에 max-height:100%로 바꿀 것)*/
+	margin-top:0; /*로고 위쪽 배경*/
+	margin-bottom:0; /*로고 아래 배경*/
+}
+
+
+.index_page_form_filed{
+
+	margin-top:0; /*입력 폼 위쪽 배경*/
+	margin-bottom:0; /*입력 폼 아래쪽 배경*/
+}
+
+.hidden_ha{
+	display:none;
+}
+
+.index_page_facebook_login{
+	display:flex;
+	align-items: center;
+	justify-content: center;
+	cursor:pointer;
+}
+
+input[type=email], input[type=password] {
+	color:#3c3c3c; /*입력폼 안쪽 글씨색*/
+	font-family: Helvetica, Arial, sans-serif; /*입력폼 안쪽 글씨체*/
+	font-size: 18px; /*입력폼 안쪽 글씨 크기*/
+	border-radius: 0;	
+	background-color: #fbfbfb; /*입려폼 배경*/
+	padding: 13px 13px 13px 54px; /*입력폼 안쪽 패딩*/
+	margin-bottom: 10px; /*입력폼 사이 마진*/
+	width:95%; /*입력폼 크기 */
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	-ms-box-sizing: border-box;
+	box-sizing: border-box;
+  	border: 3px solid rgba(0,0,0,0); /*입력폼 배경선*/
+}
+
+
+input:focus{
+	background: #fff; /*포커싱 후 배경색*/
+	box-shadow: 0;
+	border: 3px solid #3498db; /*포커싱 후 배경선*/
+	color: #3498db; /*포커싱 후 글씨 색*/
+	outline: none;
+ 	padding: 13px 13px 13px 54px; /*포커싱 후 안쪽 패딩*/
+}
+
+input:hover, textarea:hover,
+input:focus, textarea:focus {
+	background-color:white;
+}
+
+
+/* Icons ---------------------------------- */
+
+
+
+#email{
+	background-image: url(http://rexkirby.com/kirbyandson/images/email.svg);
+	background-size: 30px 30px;
+	background-position: 11px 8px;
+	background-repeat: no-repeat;
+}
+
+.index_page_input_button{
+	font-family: 'Montserrat', Arial, Helvetica, sans-serif;
+	float:left;
+	width: 95%;
+	border: #fbfbfb solid 4px;
+	cursor:pointer;
+	background-color: #3498db;
+	color:white;
+	font-size:24px;
+	padding-top:22px;
+	padding-bottom:22px;
+	-webkit-transition: all 0.3s;
+	-moz-transition: all 0.3s;
+	transition: all 0.3s;
+ 	margin-top:-4px;
+ 	font-weight:700;
+ 	border-radius: 25px;
+}
+
+.index_page_input_button:hover{
+	background-color: white;
+	color: #0493bd;
+}
+
+.index_page_form_submit:hover {
+	color: #3498db;
+}
+
+
+/*왜 시@팔 이거 안돼지...
+.ease {
+	width: 0px;
+	height: 74px;
+	background-color: #fbfbfb;
+	-webkit-transition: .3s ease;
+	-moz-transition: .3s ease;
+	-o-transition: .3s ease;
+	-ms-transition: .3s ease;
+	transition: .3s ease;
+}
+
+.index_page_form_submit:hover .ease{
+  width:95%;
+  background-color:white;
+}
+
+*/

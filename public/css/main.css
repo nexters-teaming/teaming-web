@@ -1,0 +1,287 @@
+/*main.css */
+
+/*
+
+1. we can use flex model instead of float 
+
+*/
+
+/*main page header*/
+body{
+	background-color: #45bdf4;
+}
+
+.main_page_header{
+	width:100%;
+	height:40px;
+	background-color:white;
+}
+
+/*main page nav*/
+
+.main_page_nav{
+	display:flex;
+	justify-content:space-between;
+	align-items: center;
+}
+
+
+
+
+/*main page main*/
+
+/*main page main list*/
+
+.main_page_team_list{
+	width:670px;
+	height:100%;
+	margin:80px auto;
+
+}
+
+/*main page list something */
+
+.team_list_something{
+	width:670px;
+	height:164px;
+	margin:0 auto;
+	border-radius: 10px;
+	border: solid 1px #979797;
+	margin-bottom:15px;
+}
+
+/*main page  list header */
+
+
+.list_sequence_main{
+	background-color:#ffffff;
+}
+
+.list_sequence_header{
+	margin-left: 39px;
+}
+
+.list_sequence_header > *{
+	display:inline-block;
+	
+}
+
+/*main page list progress bar */
+
+.list_sequence_header_progress > *{
+	display:inline-block;
+}
+
+.list_sequence_header > h1{
+	margin-top:35px;
+	font-family: Avenir;
+	font-size: 28px;
+	font-weight: 900;
+	text-align: center;
+	color: #282828;
+	margin-right:10px;
+}
+
+.list_sequence_header > span{
+	font-family: 'Noto Sans Gothic', "Apple SD Gothic Neo", Dotum, sans-serif;
+	font-size: 16px;
+	font-weight: 400;
+	text-align: center;
+	color: #3f3f3f;
+}
+
+.header_date{
+	color: #909090!important;
+}
+
+.list_sequence_header_progress{
+	padding-left: 39px;
+	height:50px;
+}
+.progress {
+	width: 507.8px;
+	height: 19px;
+	border-radius: 100px;
+}
+.progress-wrap {
+	background: #ddd;
+	overflow: hidden;
+	position: relative;
+}
+
+.progress-bar {
+	width:0px;
+	background: #1460a0;
+	position: absolute;
+	left: 0;
+	top: 0;
+}
+
+.progress_percent{
+
+	font-family: 'Noto Sans Gothic', "Apple SD Gothic Neo", Dotum, sans-serif;
+	font-size: 30px;
+	font-weight: 600;
+	text-align: center;
+	color: #262c39;
+}
+
+.list_sequence_header_icon{
+	float:right;
+	margin-top:7px;
+	margin-right:17px;
+}
+
+.list_sequence_header_icon > img{
+	cursor:pointer;
+}
+
+/* main page create list */
+.team_list_create{
+	cursor:pointer;
+	display:flex;
+	align-items: center;
+	justify-content: center;
+	background-color: #e0e0e0;
+}
+
+
+.team_list_create > div > p{
+	text-align: center;
+}
+
+
+/* main page aside list */
+.main_page_personal_list{
+	position:absolute;
+	display:none;
+	top:40;
+	left:0;
+}
+
+
+
+/* temp css*/
+
+/* The Modal (background) */
+.modal {
+    display: none; /* Hidden by default */
+    position: absolute; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+/* Modal Content/Box */
+.modal_content {
+	position:relative;
+	width:460px;
+	height:558px;
+    background-color: #ffffff;
+    border-radius:10px;
+    border: solid 1px #979797;
+    margin: 15% auto; /* 15% from the top and centered */
+    padding: 20px;
+    border: 1px solid #888;
+}
+
+.form_wrapper{
+	width:400px;
+	margin:15% auto;
+}
+
+.form_row_wrapper{
+	display:flex;
+	justify-content:space-between;
+	margin-bottom:43px;
+}
+
+.form_row_submit{
+	display:flex;
+
+	align-items: center;
+	justify-content: center;
+}
+
+
+.form_text{
+	font-family: 'Noto Sans Gothic', "Apple SD Gothic Neo", Dotum, sans-serif;
+	font-size: 19px;
+	font-weight: 500;
+	text-align: center;
+	color: #2a2a2a;
+}
+
+
+.submit_button{
+	font-family: 'Montserrat', Arial, Helvetica, sans-serif;
+	width:310px;
+	height:56px;
+	margin-top:21px;
+	background-color: #3bbdf1;
+	border-radius: 4px;
+	font-family: 'Noto Sans Gothic', "Apple SD Gothic Neo", Dotum, sans-serif;
+	font-size: 19px;
+	font-weight: 600;
+	text-align: center;
+	color: #ffffff;
+}
+
+
+input[type="text"]{
+	width:296px;
+	border-bottom:solid 1px #c3c3c3;;
+	border-top: 0px;
+	border-left:0px;
+	border-right:0px;
+}
+
+input[type="number"]{
+	width:100px;
+	padding-left:20px;
+}
+
+input[type="date"]{
+	width:116px;
+	height:36px;
+	background-color: #ffffff;
+	border-radius:4px;
+	border: solid 1px #c3c3c3;
+}
+
+textarea{
+	width:296px;
+	height:120px;
+	border-radius:4px;
+	background-color:#ffffff;
+	border: solid 1px #c3c3c3;
+}
+
+input[type="text"]:focus, textarea:focus{
+	background: #fff; /*포커싱 후 배경색*/
+	box-shadow: 0;
+	border-bottom: 2px solid #3498db; /*포커싱 후 배경선*/
+	border-top: 0px;
+	border-left:0px;
+	border-right:0px;
+	color: #3498db; /*포커싱 후 글씨 색*/
+	outline: none;
+}
+
+input:hover, textarea:hover,
+input:focus, textarea:focus {
+	background-color:white;
+}
+
+/* The Close Button */
+.modal_close {
+	position:absolute;
+	top:0;
+	right:0;
+	cursor:pointer;
+}

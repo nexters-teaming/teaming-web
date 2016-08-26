@@ -1,11 +1,91 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <title><%= title %></title>
-    <link rel='stylesheet' href='/stylesheets/style.css' />
-  </head>
-  <body>
-    <h1><%= title %></h1>
-    <p>Welcome to <%= title %></p>
-  </body>
+<!doctype html>
+<html class="no-js" lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <title></title>
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <link rel="apple-touch-icon" href="apple-touch-icon.png">
+  <!-- Place favicon.ico in the root directory -->
+
+  <link rel="stylesheet" href="css/normalize.css">
+  <link rel="stylesheet" href="css/index.css">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+  <script type="text/javascript" src = "js/index.js"></script>
+
+</head>
+<body>
+<header>
+
+</header>
+<main class = "index_page">
+  <section class = "index_page_intro">
+    <div class = "index_page_intro_logo">
+      <img src="img/index/element_login.png" alt = "intro_logo" id = "intro_logo"> <!-- 하... 이미지만 움직이기 -->
+    </div>
+    <div class = "index_page_contents index_page_intro_main">
+      <p>Tming은 업무 진행사항을 시각화 해줍니다.</p>
+      <p>Tming으로 더 효율적인 업무 관리를 할 수 있습니다.</p>
+    </div>
+
+    <div class = "index_page_contents index_page_intro_main">
+      <h1>지금 바로 경험해보세요!!</h1>
+    </div>
+  </section>
+
+  <section class = "index_page_connect">
+    <div class = "index_page_login">
+      <div class = "index_page_text">
+        <p><span class = "index_page_header">Welcome!</span><br><span class = "index_page_header_text">Login your account</span></p>
+      </div>
+      <div class = "index_page_facebook_login">
+        <a href="#" onclick="fb_login('<%=host%>');"><img src="img/index/bt_login.png" border="0" alt=""></a>
+        <div id="fb-root"></div>
+      </div>
+      <form name="login_form">
+        <input type="hidden" name="user_id"/>
+        <input type="hidden" name="username"/>
+        <input type="hidden" name="email"/>
+        <input type="hidden" name="user_picture"/>
+      </form>
+      <form class = "hidden_ha" aciton = "/" method = "post">
+        <div class = "index_page_form_filed">
+          <div class = "index_page_form_field-wrap">
+            <input type = "email" name = "" placeholder = "emai" id = "email" required>
+          </div>
+          <div class = "index_page_form_filed-wrap">
+            <input type = "password" name = "" placeholder = "password" required>
+          </div>
+          <div class = "index_page_form_submit">
+            <input type = "submit" value = "SIGN IN" class = "index_page_input_button">
+            <div class = "ease"></div>
+          </div>
+        </div>
+      </form>
+    </div>
+  </section>
+</main>
+<script   src="https://code.jquery.com/jquery-3.1.0.min.js"   integrity="sha256-cCueBR6CsyA4/9szpPfrX3s49M9vUU5BgtiJj06wt/s="   crossorigin="anonymous"></script>
+<script type = "text/javascript"
+        src = "https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.3/jquery-ui.min.js"></script>
+<script type="text/javascript" src="<%= host %>/js/facebook_login.js"/>
+<script type="text/javascript">
+  $(document).ready(function(){
+    $("#intro_logo").click(function(){
+      $(this).effect("bounce", {times : 4}, 1000);
+    });
+  })
+
+  function test() {
+    console.log('test');
+    checkLoginState();
+  }
+
+</script>
+
+
+</body>
 </html>
